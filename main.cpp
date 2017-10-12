@@ -1,13 +1,13 @@
 #include "stdafx.h"
 #include <cstdlib>
 #include <iostream>
-#include "generator.cpp"
+#include "generator.h"
 
 using namespace std;
 
 int main()
 {
-	Punkt* table;
+	Punkt* table = generateTable(1, 2);
 
     return 0;
 }
