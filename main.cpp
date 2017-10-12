@@ -7,7 +7,7 @@ using namespace std;
 
 int main()
 {
-	Punkt* table = generateTable(1, 2);
+	Punkt* table = generateTable(100, 1000);
 
     return 0;
 }
