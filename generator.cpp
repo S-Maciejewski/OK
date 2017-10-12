@@ -2,6 +2,7 @@
 #include<cstdlib>
 #include<iostream>
 #include<random>
+#include<fstream>
 
 using namespace std;
 
@@ -14,7 +15,6 @@ public:
 	int getX() { return x; }
 	int getY() { return y; }
 };
-
 
 Punkt* generateTable(long int size, long int range) {
 	Punkt* table = new Punkt[size];
@@ -30,4 +30,17 @@ Punkt* generateTable(long int size, long int range) {
 		table[i] = point;
 	}
 	return table;
+}
+
+void printTable(Punkt tab[], long int size) {
+	for (int i = 0; i < size; i++) {
+		cout << tab[i].getX() << ", " << tab[i].getY() << endl;
+	}
+}
+
+void writeTableToFile(Punkt tab[], long int size) {
+	ofstream out("instancja.txt");
+	for (int i = 0; i < size; i++) {
+		out << tab[i].getX() << ", " << tab[i].getY() << endl;
+	}
 }

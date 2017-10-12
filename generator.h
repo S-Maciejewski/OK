@@ -19,3 +19,7 @@ public:
 };
 
 Punkt* generateTable(long int size, long int range);
+
+void printTable(Punkt tab[], long int size);
+
+void writeTableToFile(Punkt tab[], long int size);
