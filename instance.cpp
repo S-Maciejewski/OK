@@ -34,7 +34,7 @@ Punkt* generateTable(long int size, long int range) {
 
 void printTable(Punkt tab[], long int size) {
 	for (int i = 0; i < size; i++) {
-		cout << tab[i].getX() << ", " << tab[i].getY() << endl;
+		cout << tab[i].getX() << " " << tab[i].getY() << endl;
 	}
 }
 
@@ -43,4 +43,20 @@ void writeTableToFile(Punkt tab[], long int size) {
 	for (int i = 0; i < size; i++) {
 		out << tab[i].getX() << ", " << tab[i].getY() << endl;
 	}
+}
+
+Punkt* readTable(long int size) {
+	Punkt* table = new Punkt[size];
+	Punkt point;
+	int x, y;
+	ifstream in("instancja.txt");
+	for (int i = 0; i < size; i++) {
+		in >> x >> y;
+		point.setX(x);
+		point.setY(y);
+
+		table[i] = point;
+	}
+
+	return table;
 }
