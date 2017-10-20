@@ -8,13 +8,17 @@ using namespace std;
 
 class Punkt {
 private:
-	int x, y;
+	long int x, y;
 public:
-	void setX(int X) { x = X; }
-	void setY(int Y) { y = Y; }
-	int getX() { return x; }
-	int getY() { return y; }
+	void setX(long int X) { x = X; }
+	void setY(long int Y) { y = Y; }
+	long int getX() { return x; }
+	long int getY() { return y; }
 };
+
+double distance(Punkt point1, Punkt point2) {
+	return sqrt(pow(point1.getX() - point2.getX(), 2) + pow(point1.getY() - point2.getY(), 2));
+}
 
 Punkt* generateTable(long int size, long int range) {
 	Punkt* table = new Punkt[size];
