@@ -44,6 +44,7 @@ void printTable(Punkt tab[], long int size) {
 
 void writeTableToFile(Punkt tab[], string fileName, long int size) {
 	ofstream out(fileName);
+	out << size << endl;
 	for (int i = 0; i < size; i++) {
 		out << i + 1 << " " << tab[i].getX() << " " << tab[i].getY() << endl;
 	}
