@@ -4,6 +4,7 @@
 #include<cstdlib>
 #include<iostream>
 #include<random>
+#include<fstream>
 
 
 using namespace std;
@@ -24,6 +25,6 @@ Punkt* generateTable(long int size, long int range);
 
 void printTable(Punkt tab[], long int size);
 
-void writeTableToFile(Punkt tab[], long int size);
+void writeTableToFile(Punkt tab[], string fileName, long int size);
 
-Punkt* readTable(long int size);
+Punkt* readTable(string fileName, long int size);

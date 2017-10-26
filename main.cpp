@@ -2,6 +2,7 @@
 #include <cstdlib>
 #include <iostream>
 #include "instance.h"
+#include <fstream>
 
 using namespace std;
 
@@ -41,12 +42,14 @@ double greed(Punkt tab[], long int size) {
 int main()
 {
 	long int size = 100, range = 1000;
-	Punkt* table = generateTable(size, range);
+	string fileName = "instancja.txt";
+	ifstream in(fileName);
+	in >> size;
+
+	Punkt* table = readTable(fileName, size);
 	printTable(table, size);
 	
 	cout << "Greed distance: " << greed(table, size) << endl;
-
-
 
     return 0;
 }
