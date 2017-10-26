@@ -27,4 +27,6 @@ void printTable(Punkt tab[], long int size);
 
 void writeTableToFile(Punkt tab[], string fileName, long int size);
 
+long int getInstanceSize(string fileName);
+
 Punkt* readTable(string fileName, long int size);

@@ -62,13 +62,13 @@ long int getInstanceSize(string fileName) {
 Punkt* readTable(string fileName, long int size) {
 	int x, y, numer;
 	ifstream in(fileName);
-	//in >> numer;
+
 	Punkt* table = new Punkt[size];
 	Punkt point;
 
 	for (int i = 0; i < size; i++) {
-		//in >> numer >> x >> y;
-		in >> x >> y;
+		in >> numer >> x >> y;
+		//in >> x >> y;		//dla odczytu b³êdnej instancji ze strony
 		point.setX(x);
 		point.setY(y);
 
