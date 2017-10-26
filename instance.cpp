@@ -26,7 +26,7 @@ Punkt* generateTable(long int size, long int range) {
 
 	random_device random;
 	mt19937 gen(random());
-	uniform_int_distribution<> distribution(-range, range);
+	uniform_int_distribution<> distribution(0, range);
 	for (int i = 0; i < size; i++) {
 		point.setX(distribution(gen));
 		point.setY(distribution(gen));
