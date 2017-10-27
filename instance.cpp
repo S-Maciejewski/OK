@@ -3,7 +3,6 @@
 #include<iostream>
 #include<random>
 #include<fstream>
-//
 using namespace std;
 
 class Punkt {
