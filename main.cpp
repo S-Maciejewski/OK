@@ -3,7 +3,6 @@
 #include <iostream>
 #include "instance.h"
 #include <fstream>
-//
 
 using namespace std;
 
