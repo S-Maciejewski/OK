@@ -6,7 +6,6 @@
 #include<fstream>
 
 using namespace std;
-//
 class Punkt {
 private:
 	long int x, y;
