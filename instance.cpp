@@ -1,4 +1,4 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include<cstdlib>
 #include<iostream>
 #include<random>
@@ -68,7 +68,7 @@ Punkt* readTable(string fileName, long int size) {
 
 	for (int i = 0; i < size; i++) {
 		in >> numer >> x >> y;
-		//in >> x >> y;		//dla odczytu b³êdnej instancji ze strony
+		//in >> x >> y;		//dla odczytu bï¿½ï¿½dnej instancji ze strony
 		point.setX(x);
 		point.setY(y);
 

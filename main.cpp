@@ -1,8 +1,9 @@
-#include "stdafx.h"
+//#include "stdafx.h"
 #include <cstdlib>
 #include <iostream>
 #include "instance.h"
 #include <fstream>
+
 
 using namespace std;
 
