@@ -3,13 +3,13 @@
 #include <iostream>
 #include "instance.h"
 #include <fstream>
-
+//
 
 using namespace std;
 
 double greed(Punkt tab[], long int size) {
 	double dist = 0, minDist = 0;
-	long int position = 0, closestPos;
+	long int position = 0, closestPos = 0;
 	bool* visited = new bool[size];
 	for (int i = 0; i < size; i++) visited[i] = false;
 
