@@ -7,44 +7,43 @@
 using namespace std;
 
 double greed(Punkt tab[], long int size) {
-	double dist = 0, minDist = 0;
+	double dist = 0, minDist;
 	long int position = 0, closestPos;
 	bool* visited = new bool[size];
 	for (int i = 0; i < size; i++) visited[i] = false;
 
 	visited[0] = true;
+	
+	cout << "Droga: ";
 
 	for (int i = 0; i < size; i++) {
-		for (int j = 0; j < size; j++)
-			if (!visited[j]) {
-				minDist = distance(tab[position], tab[j]);
-				closestPos = j;
-			}
+		minDist = DBL_MAX;
+		cout << position <<", ";
 
-		for (int j = 0; j < size - i; j++) {
-			if (j != position)
-				if (distance(tab[position], tab[j]) < minDist) {
-					minDist = distance(tab[position], tab[j]);
+		for (int j = 0; j < size; j++) {
+			if (!visited[j]) {
+				if (minDist > distance(tab[position], tab[j])) {
 					closestPos = j;
+					minDist = distance(tab[position], tab[j]);
 				}
+			}
 		}
-		dist += minDist;
+
+		if (i != size - 1) {
+			dist += minDist;
+		}
 		visited[closestPos] = true;
 		position = closestPos;
-
-		if (i == size - 1)
-			dist += distance(tab[position], tab[0]);
 	}
+	dist += distance(tab[position], tab[0]);
 	
 	return dist;
 }
 
 int main()
 {
-	long int size = 80, range = 1000;
-	string fileName = "naszaInstancja.txt";
-	//ifstream in(fileName);
-	//in >> size;
+	long int size = 52, range = 1000;
+	string fileName = "berlin52.txt";
 
 	Punkt* table = readTable(fileName);
 	printTable(table, size);
