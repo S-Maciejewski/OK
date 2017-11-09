@@ -23,15 +23,27 @@ double distance(Punkt point1, Punkt point2) {
 Punkt* generateTable(long int size, long int range) {
 	Punkt* table = new Punkt[size];
 	Punkt point;
-
+	long int randX, randY;
+	int generated = 0;
 	random_device random;
 	mt19937 gen(random());
 	uniform_int_distribution<> distribution(0, range);
 	for (int i = 0; i < size; i++) {
+		randX = distribution(gen);
+		randY = distribution(gen);
+		
+		for (int j = 0; j < generated; j++) {
+			if (randX == table[j].getX() && randY == table[j].getY()) {
+				i--;
+				continue;
+			}
+		}
+
 		point.setX(distribution(gen));
 		point.setY(distribution(gen));
 
 		table[i] = point;
+		generated++;
 	}
 	return table;
 }
