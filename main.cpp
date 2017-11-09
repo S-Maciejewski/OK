@@ -42,13 +42,12 @@ double greed(Punkt tab[], long int size) {
 int main()
 {
 	long int size = 80, range = 1000;
-	string fileName = "instancja.txt";
+	string fileName = "naszaInstancja.txt";
 	//ifstream in(fileName);
 	//in >> size;
 
-	Punkt* table = generateTable(size, range);
+	Punkt* table = readTable(fileName);
 	printTable(table, size);
-	writeTableToFile(table, fileName, size);
 	
 	cout << "Greed distance: " << greed(table, size) << endl;
 
