@@ -1,1 +1,0 @@
-Projekt na OK, deadline do koñca semestru.
