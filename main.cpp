@@ -45,7 +45,7 @@ int main()
 	long int size = 52, range = 1000;
 	string fileName = "berlin52.txt";
 
-	Punkt* table = readTable(fileName);
+	Punkt* table = readTable(fileName, size);
 	printTable(table, size);
 	
 	cout << "Greed distance: " << greed(table, size) << endl;

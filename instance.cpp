@@ -71,7 +71,7 @@ long int getInstanceSize(string fileName) {
 	return size;
 }
 
-Punkt* readTable(string fileName) {
+Punkt* readTable(string fileName, long int size) {
 	int x, y, numer;
 	ifstream in(fileName);
 
