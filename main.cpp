@@ -1,5 +1,6 @@
 #include "stdafx.h"
 
+
 #include <cstdlib>
 #include <iostream>
 #include "instance.h"
@@ -54,9 +55,10 @@ void opt2(Edge edge[], long int size, long int route[], double& currentDistance)
     double bbEdge, eeEdge, difference; //begin-begin edge & end-end edge
     Edge temp;
     bool change;
+    int counter = 0;
 
-    while(true) {
-        change = false;
+    while(counter<=10) {
+        change = 0;
         for (int j = 0; j <= size - 3; j++) {
             for (int k = j + 2; k < size && k!=j+size-1; k++) {
 
@@ -65,13 +67,16 @@ void opt2(Edge edge[], long int size, long int route[], double& currentDistance)
                 difference = edge[j].getLength() + edge[k].getLength() - bbEdge - eeEdge;
 
                 if (difference > 0) {
-                    change = true;
+                    change = difference;
                     //cout<<"Swapping : " << j<<" "<<k<<endl;
                     swapEdges(edge, bbEdge, eeEdge, j, k, temp);
                 }
             }
         }
-        if(!change) break;
+        if(change == 0) break;
+
+        if(change <= 5) counter++;
+        else counter = 0;
     }
     currentDistance=0;
     for(int i=0; i<size; i++) {
@@ -83,8 +88,9 @@ int main()
 {
     bool printEveryPath = false;
     string fileName = "/home/jan/CLionProjects/OK/inst.txt";
+    long int size, range = 1000;
+	size = getInstanceSize(fileName);
 
-	long int size = getInstanceSize(fileName), range = 1000;
     Punkt* table = new Punkt[size];
     Edge* edge = new Edge[size];
 
@@ -92,12 +98,13 @@ int main()
     double bestGreedEver = DBL_MAX, greedDist, randomDist;
 
 	readTable(fileName, table);
-	//printTable(table, size);
+    //generateTable(table, size, range);
+	printTable(table, size);
 
     //GREED + 2-OPT
-    
+
     for(int i=0; i<size; i++) {
-        cout<<endl<<"###############################################" <<endl;
+        cout<<endl<<i<<"  ###############################################" <<endl;
 
         greedDist = greed(table, route, size, i, printEveryPath);
         cout<<endl<<"Current greed distance: " << greedDist << endl;
@@ -107,7 +114,7 @@ int main()
         //printEdges(edge, size);
 
         opt2(edge, size, route, greedDist);
-        //printEdges(edge, size);
+       // printEdges(edge, size);
         cout << "2-Opt result : " << greedDist << endl;
         if(greedDist < bestGreedEver) bestGreedEver = greedDist;
     }
@@ -117,7 +124,7 @@ int main()
     cout<<endl<<"BEST RESULT BY GREED: " << bestGreedEver <<endl;
 
     //RANDOM + 2-OPT
-    
+
     while(true) {
 
         //cout << endl << "###############################################" << endl;
@@ -136,10 +143,12 @@ int main()
             bestGreedEver = randomDist;
             cout<<endl<<"###############################################" <<endl;
             cout<<endl<<"BEST RESULT BY RANDOM: " << bestGreedEver <<endl;
-            printEdges(edge, size);
+            //printEdges(edge, size);
         }
     }
 
     return 0;
 }
+
+
 
