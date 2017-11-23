@@ -8,34 +8,34 @@ using namespace std;
 class Punkt {
 private:
 	long int x, y;
-    bool visited;
-    int number;
+	bool visited;
+	int number;
 public:
 	void setX(long int X) { x = X; }
 	void setY(long int Y) { y = Y; }
-    void setNumber(int Number) { number = Number; }
-    void setVisited(bool V) { visited = V; }
-    bool isVisited() { return visited; }
+	void setNumber(int Number) { number = Number; }
+	void setVisited(bool V) { visited = V; }
+	bool isVisited() { return visited; }
 	long int getX() { return x; }
 	long int getY() { return y; }
-    int getNumber() { return number; }
+	int getNumber() { return number; }
 };
 
 class Edge {
 private:
-    Punkt begin, end;
-    double length;
+	Punkt begin, end;
+	double length;
 public:
-    void setBegin(Punkt Begin) { begin = Begin; }
-    void setEnd(Punkt End) { end = End; }
-    void setLength(double Length) { length = Length; }
-    Punkt getBegin() { return begin; }
-    Punkt getEnd() { return end; }
-    double getLength() { return length; }
+	void setBegin(Punkt Begin) { begin = Begin; }
+	void setEnd(Punkt End) { end = End; }
+	void setLength(double Length) { length = Length; }
+	Punkt getBegin() { return begin; }
+	Punkt getEnd() { return end; }
+	double getLength() { return length; }
 };
 
 double distance(Punkt point1, Punkt point2) {
-    return sqrt(pow(point1.getX() - point2.getX(), 2) + pow(point1.getY() - point2.getY(), 2));
+	return sqrt(pow(point1.getX() - point2.getX(), 2) + pow(point1.getY() - point2.getY(), 2));
 }
 
 void generateTable(Punkt* table, long int size, long int range) {
@@ -50,7 +50,7 @@ void generateTable(Punkt* table, long int size, long int range) {
 	for (int i = 0; i < size; i++) {
 		randX = distribution(gen);
 		randY = distribution(gen);
-		
+
 		for (int j = 0; j < generated; j++) {
 			if (randX == table[j].getX() && randY == table[j].getY()) {
 				i--;
@@ -60,8 +60,8 @@ void generateTable(Punkt* table, long int size, long int range) {
 
 		point.setX(distribution(gen));
 		point.setY(distribution(gen));
-        point.setNumber(i);
-        point.setVisited(false);
+		point.setNumber(i);
+		point.setVisited(false);
 
 		table[i] = point;
 		generated++;
@@ -75,19 +75,19 @@ void printTable(Punkt tab[], long int size) {
 }
 
 void printRoute(long int route[], long int size) {
-    cout << "Route : ";
-    for (int i = 0; i <= size; i++) {
-        cout << route[i] << " ";
-    }
-    cout<<endl<<endl;
+	cout << "Route : ";
+	for (int i = 0; i <= size; i++) {
+		cout << route[i] << " ";
+	}
+	cout<<endl<<endl;
 }
 
 void printEdges(Edge edge[], long int size) {
-    cout << endl<< "Final edges : " << endl;
-    for (int i = 0; i < size; i++) {
-        cout << i<<" :   " << edge[i].getBegin().getNumber() <<"(" << edge[i].getBegin().getX() << "," << edge[i].getBegin().getY() << ")" << " --> " << edge[i].getEnd().getNumber() <<"(" << edge[i].getEnd().getX() << "," << edge[i].getEnd().getY() << ")" << "    " << edge[i].getLength()<<endl;
-    }
-    cout<<endl;
+	cout << endl<< "Final edges : " << endl;
+	for (int i = 0; i < size; i++) {
+		cout << i<<" :   " << edge[i].getBegin().getNumber() <<"(" << edge[i].getBegin().getX() << "," << edge[i].getBegin().getY() << ")" << " --> " << edge[i].getEnd().getNumber() <<"(" << edge[i].getEnd().getX() << "," << edge[i].getEnd().getY() << ")" << "    " << edge[i].getLength()<<endl;
+	}
+	cout<<endl;
 }
 
 void writeTableToFile(Punkt tab[], string fileName, long int size) {
@@ -111,28 +111,28 @@ void readTable(string fileName, Punkt* table) {
 	ifstream in(fileName);
 	long int size;
 	in >> size;
-    int x, y, numer;
+	int x, y, numer;
 	Punkt point;
 
 	for (int i = 0; i < size; i++) {
 		in >> numer >> x >> y;
 		point.setX(x);
 		point.setY(y);
-        point.setVisited(false);
-        point.setNumber(i);
+		point.setVisited(false);
+		point.setNumber(i);
 
 		table[i] = point;
 	}
 }
 
 void makeEdges(Edge* edge, long int route[], Punkt table[], long int size) {
-    double dist;
-    for(int i=0; i<size; i++) {
-        edge[i].setBegin(table[route[i]]);
-        edge[i].setEnd(table[route[i+1]]);
-        edge[i].getLength(); // wuuuuut... nie wiem dlaczego, ale bez tego nie dziala
-        edge[i].setLength(distance(edge[i].getBegin(), edge[i].getEnd()));
-    }
+	double dist;
+	for(int i=0; i<size; i++) {
+		edge[i].setBegin(table[route[i]]);
+		edge[i].setEnd(table[route[i+1]]);
+		edge[i].getLength(); // wuuuuut... nie wiem dlaczego, ale bez tego nie dziala
+		edge[i].setLength(distance(edge[i].getBegin(), edge[i].getEnd()));
+	}
 }
 
 void swapEdges(Edge* edge, double bb, double ee, int begin, int end, Edge& temp) {
@@ -223,6 +223,5 @@ double generateRoute(Punkt tab[], long int* route, long int size, bool printPath
 
 	return dist;
 }
-
 
 

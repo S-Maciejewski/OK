@@ -1,0 +1,40 @@
+#IncludeRegexLine: ^[ 	]*#[ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+D:/Projekty/OK/instance.cpp
+cstdlib
+-
+iostream
+-
+random
+-
+fstream
+-
+
+D:/Projekty/OK/instance.h
+cstdlib
+-
+iostream
+-
+random
+-
+fstream
+-
+
+D:/Projekty/OK/main.cpp
+cstdlib
+-
+iostream
+-
+instance.h
+D:/Projekty/OK/instance.h
+fstream
+-
+cfloat
+-
+
