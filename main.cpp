@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 
 #include <cstdlib>
 #include <iostream>
@@ -97,12 +95,8 @@ int main()
     long int* route = new long int[size+1];
     double bestGreedEver = DBL_MAX, greedDist, randomDist;
 
-<<<<<<< HEAD
-	Punkt* table = readTable(fileName, size);
-=======
 	readTable(fileName, table);
     //generateTable(table, size, range);
->>>>>>> ede0e9ce3ee051e66ae6e319d125bf189a4e992b
 	printTable(table, size);
 
     //GREED + 2-OPT
@@ -153,6 +147,4 @@ int main()
 
     return 0;
 }
-
-
 
