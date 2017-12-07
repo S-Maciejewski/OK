@@ -10,34 +10,34 @@ using namespace std;
 class Punkt {
 private:
 	long int x, y;
-	bool visited;
+    bool visited;
 public:
 	void setX(long int X);
 	void setY(long int Y);
-	void setNumber(int Number);
-	void setVisited(bool Z);
-	bool isVisited();
+    void setNumber(int Number);
+    void setVisited(bool Z);
+    bool isVisited();
 	long int getX();
 	long int getY();
-	int getNumber();
+    int getNumber();
 };
 
 class Edge {
 private:
-	Punkt begin, end;
-	double length;
+    Punkt begin, end;
+    double length;
 public:
-	void setBegin(Punkt X);
-	void setEnd(Punkt Y);
-	void setLength(double Length);
-	Punkt getBegin();
-	Punkt getEnd();
-	double getLength();
+    void setBegin(Punkt X);
+    void setEnd(Punkt Y);
+    void setLength(double Length);
+    Punkt getBegin();
+    Punkt getEnd();
+    double getLength();
 };
 
 double distance(Punkt point1, Punkt point2);
 
-Punkt* generateTable(long int size, long int range);
+void generateTable(Punkt* table, long int size, long int range);
 
 void printTable(Punkt tab[], long int size);
 
