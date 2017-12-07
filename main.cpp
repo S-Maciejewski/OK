@@ -9,12 +9,12 @@ using namespace std;
 
 double greed(Punkt tab[], long int* route, long int size, long int const startPosition, bool printPath) {
 
-    double dist = 0, minDist;
-    long int position = startPosition, closestPos;
+	double dist = 0, minDist;
+	long int position = startPosition, closestPos;
 
-    for (int i = 0; i < size; i++) tab[i].setVisited(false);
+	for (int i = 0; i < size; i++) tab[i].setVisited(false);
 
-    tab[startPosition].setVisited(true);
+	tab[startPosition].setVisited(true);
 
     if(printPath) {
         cout << "Droga: ";
@@ -23,29 +23,29 @@ double greed(Punkt tab[], long int* route, long int size, long int const startPo
 
     route[0] = startPosition;
 
-    for (int i = 0; i < size - 1; i++) {
-        minDist = DBL_MAX;
+	for (int i = 0; i < size - 1; i++) {
+		minDist = DBL_MAX;
 
-        for (int j = 0; j < size; j++) {
-            if (!tab[j].isVisited()) {
-                if (minDist > distance(tab[position], tab[j])) {
-                    closestPos = j;
-                    minDist = distance(tab[position], tab[j]);
-                }
-            }
-        }
+		for (int j = 0; j < size; j++) {
+			if (!tab[j].isVisited()) {
+				if (minDist > distance(tab[position], tab[j])) {
+					closestPos = j;
+					minDist = distance(tab[position], tab[j]);
+				}
+			}
+		}
         dist += minDist;
-        tab[closestPos].setVisited(true);
+		tab[closestPos].setVisited(true);
 
-        position = closestPos;
+		position = closestPos;
         if(printPath) cout << position <<" --> ";
         route[i+1] = position;
-    }
-    dist += distance(tab[position], tab[startPosition]);
+	}
+	dist += distance(tab[position], tab[startPosition]);
     if(printPath) cout << startPosition <<endl;
     route[size] = startPosition;
-
-    return dist;
+	
+	return dist;
 }
 
 void opt2(Edge edge[], long int size, long int route[], double& currentDistance) {
@@ -85,9 +85,9 @@ void opt2(Edge edge[], long int size, long int route[], double& currentDistance)
 int main()
 {
     bool printEveryPath = false;
-    string fileName = "/home/jan/CLionProjects/OK/inst.txt";
+    string fileName = "/home/jan/CLionProjects/OK/berlin52.txt";
     long int size, range = 1000;
-    size = getInstanceSize(fileName);
+	size = getInstanceSize(fileName);
 
     Punkt* table = new Punkt[size];
     Edge* edge = new Edge[size];
@@ -95,17 +95,17 @@ int main()
     long int* route = new long int[size+1];
     double bestGreedEver = DBL_MAX, greedDist, randomDist;
 
-    readTable(fileName, table);
+	readTable(fileName, table);
     //generateTable(table, size, range);
-    printTable(table, size);
+	printTable(table, size);
 
     //GREED + 2-OPT
 
     for(int i=0; i<size; i++) {
-        cout<<endl<<i<<"  ###############################################" <<endl;
+        cout << endl << i << "  ###############################################" << endl;
 
         greedDist = greed(table, route, size, i, printEveryPath);
-        cout<<endl<<"Current greed distance: " << greedDist << endl;
+        //cout << endl << "Current greed distance: " << greedDist << endl;
         //printRoute(route, size);
 
         makeEdges(edge, route, table, size);
@@ -113,8 +113,13 @@ int main()
 
         opt2(edge, size, route, greedDist);
         // printEdges(edge, size);
-        cout << "2-Opt result : " << greedDist << endl;
-        if(greedDist < bestGreedEver) bestGreedEver = greedDist;
+        if (greedDist < bestGreedEver) {
+            bestGreedEver = greedDist;
+            cout << endl << "###############################################" << endl;
+            cout << endl << "BEST RESULT BY GREED: " << bestGreedEver << endl;
+            //printEdges(edge, size);
+        }
+
     }
 
     cout<<endl<<"###############################################" <<endl;
@@ -147,3 +152,4 @@ int main()
 
     return 0;
 }
+
